@@ -1,0 +1,40 @@
+<!DOCTYPE>
+<html ng-app="LibraryApp">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  <script src="library.js"></script>
+  <title>Library</title>
+</head>
+<body>
+  <div ng-controller="LibraryController">
+    <h1>Books</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Author</th>
+          <th>Availability</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input ng-model="tempBook.name"></td>
+          <td><input ng-model="tempBook.author"></td>
+          <td><input ng-model="tempBook.availability"></td>
+          <td><button ng-click="addBook()">Add Book</button></td>
+        </tr>
+        <tr ng-repeat="book in books">
+          <td>{{book.name}}</td>
+          <td>{{book.author}}</td>
+          <td>{{book.availability}}</td>
+          <td><button ng-click="makeUnavailable(book._id)" ng-if="book.availability">Make Unavailable</button></td>
+          <td><button ng-click="makeAvailable(book._id)" ng-if="!book.availability">Make available</button></td>
+          <td><button ng-click="remove(book._id)">Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
